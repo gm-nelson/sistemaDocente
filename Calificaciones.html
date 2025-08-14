@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluaciones</title>
+  <link rel="icon" type="image/png" href="https://portal.uad.mx/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <style>
+
+        .grupo-botones h3 {
+            margin-top: 0;
+            color: var(--default);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 8px;
+            font-weight: 500;
+        }
+.header {
+    background: linear-gradient(135deg, #d00000 0%, #C41919 100%);
+    padding: 15px 0;
+    margin-bottom: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.header img {
+    height: 60px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 0 auto 20px;
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    overflow: hidden;
+}
+
+.nav-link {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa;
+    color: var(--accent);
+}
+
+.nav-link i {
+    font-size: 16px;
+}
+
+.nav-link .fa-external-link-alt {
+    font-size: 0.85em;
+    margin-left: 3px;
+}
+
+:root {
+    /* Añade estas variables que faltan */
+    --radius: 10px;
+    --shadow: 0 8px 22px rgba(16,24,40,0.06);
+    
+    /* Mantén las que ya tenías */
+    --primary: #4361ee;
+    --secondary: #3a0ca3;
+    --success: #4cc9f0;
+    --danger: #f72585;
+    --warning: #f8961e;
+    --info: #4895ef;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+.header {
+    background: linear-gradient(135deg, #d00000 0%, #9d0208 100%);
+    padding: 15px 0;
+    margin-bottom: 25px;
+    border-radius: var(--radius); /* Usa la variable correcta */
+    box-shadow: var(--shadow); /* Usa la variable correcta */
+    text-align: center;
+}
+/* 
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        } */
+    body{
+      font-family:'Poppins',sans-serif;
+      max-width: 1200px;
+      margin:0 auto;
+      padding:20px;
+      background-color: #f5f7fa;
+      color:#333;
+      line-height: 1.6;
+    }
+    .top{max-width:1200px;margin:0 auto 16px;display:flex;align-items:center;gap:16px}
+    .logo{background:linear-gradient(90deg,var(--brand-red),#c62828);padding:10px;border-radius:12px;box-shadow:var(--shadow)}
+    .logo img{height:54px}
+    .title{flex:1}
+    .title h1{margin:0;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    /* h1 {
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            border-radius: 2px;
+        } */
+
+    .wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:18px}
+    @media(max-width:980px){.wrap{grid-template-columns:1fr}}
+
+    .card{transition: var(--transition);
+            background-color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);}
+    .card h3{margin:0 0 10px}
+    textarea,input,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+
+    /* Controls left */
+    .left .section{margin-bottom:12px}
+    .btn {
+  background: #C41919; /* Fondo rojo */
+  color: white; /* Letra blanca */
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold; /* Letra negrita */
+}
+    .btn.secondary{background:#8e44ad}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid #e6e9ef}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+
+    /* students table */
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eef2f6;text-align:left}
+    thead th{background:#fafbfd;position:sticky;top:0}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* rubrics panel */
+    .rubric-list{display:flex;flex-direction:column;gap:8px}
+    .rubric-item{display:flex;align-items:center;gap:8px;background:#fbfbfd;padding:8px;border-radius:8px;border:1px solid #f0f2f6}
+    .rubric-item input[type=number]{width:100px}
+
+    /* scoring grid */
+    .scores-grid{max-height:300px;overflow:auto;border:1px solid #eef2f6;border-radius:8px}
+    .scores-grid table td,input[type=number]{font-weight:600}
+
+    .footer{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+    .hint{font-size:13px;color:var(--muted)}
+
+    .controls-row{display:flex;gap:8px;flex-wrap:wrap}
+
+    .badge{background:var(--brand-red);color:white;padding:6px 10px;border-radius:999px;font-weight:700}
+
+    /* Results table */
+    .results-table {max-height:300px;overflow:auto;margin-top:12px}
+    .results-table table {width:100%}
+    .results-table th {position:sticky;top:0;background:white}
+
+    /* Añade esto en la sección de estilos */
+.faltas-3 {
+    color: #e67e22; /* Naranja */
+    font-weight: bold;
+}
+
+.faltas-4 {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+  </style>
+  <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <!-- <div class="top">
+    <div class="logo"><img src="https://portal.uad.mx/assets/dist/img/logo.png" alt="UAD logo"></div>
+    <div class="title">
+      <h1>Sistema de Rúbricas y Calificaciones</h1>
+      <div class="subtitle">Importa tu lista de asistencia exportada y calcula asistencias, faltas y crea rúbricas personalizadas.</div>
+    </div>
+    <div class="badge">Beta</div>
+  </div> -->
+  <div class="header">
+    <img src="https://portal.uad.mx/assets/dist/img/logo.png" alt="Universidad Autónoma de Durango">
+</div>
+
+<!-- Barra de navegación -->
+<div class="nav-bar">
+    <a href="asistencia.html" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-clipboard-check"></i> Asistencia</a>
+    <a href="calificaciones.html" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Evaluaciones</a>
+    <a href="https://portal.uad.mx" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Portal UAD</a>
+</div>
+
+<center><h1><i class="fas fa-star"></i> Evaluaciones y Rúbricas</h1></center>
+
+  <div class="wrap">
+    <!-- LEFT: Import + students + totals + scoring -->
+    <div class="left">
+ <div class="card section">
+        <!-- <h3>1) Importar lista de asistencia</h3> -->
+         <div class="grupo-botones">
+        <h3><i class="fas fa-paperclip"></i> Importar tabla de asistencia</h3>
+        </div>
+        <div class="small">Formato compatible: filas de meses (fila 1), días (fila 2), luego alumnos (fila 3+). Celdas pueden contener múltiples '.' o '/'</div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <input type="file" id="fileInput" accept=".xlsx,.xls" />
+          <button class="btn ghost" id="btnPaste">Pegar desde portapapeles</button>
+        </div>
+        <div style="margin-top:8px"><button id="btnProcess" class="btn" disabled>Procesar archivo</button></div>
+      </div>
+      <div class="card section" id="rubricsCard">
+        <h3><i class="fas fa-cog"></i> Rúbricas</h3>
+        <div class="small">Agrega rubricas que en conjunto no excedan 100%.</div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <input type="text" id="rubricName" placeholder="Nombre (Ej: Asistencia, Examen)">
+          <input type="number" id="rubricPercent" placeholder="%" min="1" max="100">
+          <button id="btnAddRubric" class="btn secondary">Agregar</button>
+        </div>
+        
+        <div style="margin-top:10px" class="rubric-list" id="rubricList"></div>
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+          <div class="small">Total asignado: <strong id="rubricsTotal">0</strong>%</div>
+          <div style="flex:1"></div>
+          <button id="btnClearRubrics" class="btn ghost">Limpiar</button>
+        </div>
+      </div>
+
+      <div class="card section" id="evaluateCard" style="display:none">
+        <h3><i class="fas fa-chalkboard-teacher"></i> Evaluar rúbricas</h3>
+        <div class="small">Puedes evaluar en bloque o uno-a-uno. Las puntuaciones son 0-100 y luego se transforman al % de la rúbrica.</div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button id="btnOpenGrid" class="btn">Abrir grid de evaluación</button>
+          <button id="btnStartSeq" class="btn secondary">Evaluar 1x1 (secuencial)</button>
+        </div>
+        <div style="margin-top:10px"><button id="btnCalcFinal" class="btn">Calcular calificaciones finales</button></div>
+      </div>
+    </div>
+
+
+
+      <div class="card section" id="studentsCard" style="display:none">
+        <h3><i class="fas fa-user"></i> Alumnos y resumen</h3>
+        <div class="small">Se han importado <span id="countStudents">0</span> alumnos. Totales del periodo:</div>
+        <div style="display:flex;gap:12px;margin-top:8px;align-items:center">
+          <div style="flex:1;background:#fff;padding:10px;border-radius:8px;border:1px solid #f0f2f6">
+            <div class="small">Total asistencias (suma)</div>
+            <div id="totalAsistencias" style="font-weight:800;font-size:18px">0</div>
+          </div>
+          <div style="flex:1;background:#fff;padding:10px;border-radius:8px;border:1px solid #f0f2f6">
+            <div class="small">Total faltas (suma)</div>
+            <div id="totalFaltas" style="font-weight:800;font-size:18px">0</div>
+          </div>
+        </div>
+
+        
+
+        <div style="margin-top:12px">
+          <div class="small">Tabla de alumnos (haz click en un alumno para ver detalle):</div>
+          <div class="scores-grid" id="studentsGrid" style="margin-top:8px">
+            <!-- Table generated by JS -->
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px" id="resultsCard">
+        <h3><i class="fas fa-edit"></i> Calificaciones</h3>
+        <div class="results-table" id="resultsTable">
+          <!-- Table will be inserted here -->
+        </div>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-print"></i> Exportar resultados</h3>
+        <!-- <div><strong>Exportar resultados</strong></div> -->
+        <div class="controls-row" style="margin-top:8px">
+          <!-- <button id="btnExportCSV" class="btn ghost">Exportar CSV</button> -->
+          <button id="btnExportExcel" class="btn">Exportar Excel</button>
+          <button id="btnExportPDF" class="btn secondary">Exportar PDF</button>
+        </div>
+        <div class="small">Vista previa rápida de la primera fila de la tabla importada</div>
+        <div style="margin-top:10px"><pre id="previewHead" class="small" style="white-space:pre-wrap"></pre></div>
+        <hr style="margin:12px 0;border:none;border-top:1px solid #f0f2f6">
+        <div style="margin-top:12px">
+          <div class="small">Estado:</div>
+          <div id="status" class="small">Esperando importación...</div>
+        </div>
+      </div>
+      </div>
+
+  
+      
+
+    <!-- RIGHT: Rubrics sidebar + results -->
+    <!-- <div class="right">
+
+
+
+      
+
+      <div class="card" style="margin-top:12px">
+        <h3><i class="fas fa-cog"></i>Ayuda breve</h3>
+        <div class="small">- Las celdas de asistencia pueden contener varios "." o "/". Se cuentan todos.<br>- Al exportar se genera un CSV/XLSX con columnas: Alumno, Asistencias, Faltas, Puntos por rúbrica... </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Modal simple para evaluación secuencial -->
+  <div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);align-items:center;justify-content:center">
+    <div style="background:white;padding:18px;border-radius:12px;max-width:420px;width:94%;box-shadow:var(--shadow)">
+      <div id="modalContent"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+        <button id="modalSkip" class="btn ghost">Omitir</button>
+        <button id="modalNext" class="btn">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ===== data structures =====
+let importedRows = []; // raw rows from sheet (arrays)
+let headers = []; // months/days captured if needed
+let alumnos = []; // array of {name, totals: {asist: n, falt: n}, cells: [cellStrings]}
+let rubricas = []; // {name, percent}
+let scores = {}; // scores[name][rubricaName] = 0-100
+
+// DOM elements
+const fileInput = document.getElementById('fileInput');
+const btnProcess = document.getElementById('btnProcess');
+const btnPaste = document.getElementById('btnPaste');
+const studentsCard = document.getElementById('studentsCard');
+const studentsGrid = document.getElementById('studentsGrid');
+const countStudents = document.getElementById('countStudents');
+const totalAsistenciasEl = document.getElementById('totalAsistencias');
+const totalFaltasEl = document.getElementById('totalFaltas');
+const previewHead = document.getElementById('previewHead');
+const statusEl = document.getElementById('status');
+
+const btnAddRubric = document.getElementById('btnAddRubric');
+const rubricList = document.getElementById('rubricList');
+const rubricsTotal = document.getElementById('rubricsTotal');
+const btnClearRubrics = document.getElementById('btnClearRubrics');
+const btnOpenGrid = document.getElementById('btnOpenGrid');
+const btnStartSeq = document.getElementById('btnStartSeq');
+const btnCalcFinal = document.getElementById('btnCalcFinal');
+const btnExportCSV = document.getElementById('btnExportCSV');
+const btnExportExcel = document.getElementById('btnExportExcel');
+
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+const modalNext = document.getElementById('modalNext');
+const modalSkip = document.getElementById('modalSkip');
+
+const resultsTable = document.getElementById('resultsTable');
+
+// ===== Event Listeners =====
+fileInput.addEventListener('change', () => { 
+  btnProcess.disabled = false; 
+  statusEl.textContent = 'Archivo listo para procesar.'; 
+});
+
+btnProcess.addEventListener('click', () => {
+  if (fileInput.files.length === 0) return alert('Selecciona un archivo');
+  const f = fileInput.files[0];
+  processFile(f);
+});
+
+btnPaste.addEventListener('click', async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+    if(!text) return alert('El portapapeles está vacío o no es texto.');
+    const rows = text.trim().split(/\r?\n/).map(r=>r.split(/\t|,/));
+    processRows(rows);
+  } catch(e) {
+    alert('No se pudo leer el portapapeles. Usa Ctrl+V en el textarea original o importa Excel.');
+  }
+});
+
+btnAddRubric.addEventListener('click', addRubric);
+btnClearRubrics.addEventListener('click', clearRubrics);
+btnOpenGrid.addEventListener('click', openGrid);
+btnStartSeq.addEventListener('click', startSequentialEvaluation);
+btnCalcFinal.addEventListener('click', computeFinals);
+btnExportCSV.addEventListener('click', exportToCSV);
+btnExportExcel.addEventListener('click', exportToExcel);
+btnExportPDF = document.getElementById('btnExportPDF');
+btnExportPDF.addEventListener('click', exportToPDF);
+
+// ===== File Processing =====
+async function processFile(file) {
+  statusEl.textContent = 'Procesando archivo...';
+  try {
+    const data = await file.arrayBuffer();
+    const workbook = XLSX.read(data);
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const json = XLSX.utils.sheet_to_json(sheet, {header:1, raw:false});
+    processRows(json);
+  } catch(e) {
+    console.error(e); 
+    alert('Error leyendo archivo'); 
+    statusEl.textContent='Error al procesar';
+  }
+}
+
+function processRows(rows) {
+  if(!rows || rows.length < 3) return alert('Formato inválido: se esperan al menos 3 filas (mes/dia/alumnos)');
+  
+  importedRows = rows;
+  previewHead.textContent = JSON.stringify(rows[0].slice(0,10)) + '\n' + JSON.stringify(rows[1].slice(0,10));
+
+  alumnos = [];
+  for(let i=2; i<rows.length; i++) {
+    const row = rows[i];
+    if(!row || !row[0]) continue;
+    const name = String(row[0]).trim();
+    const cells = row.slice(1).map(c => c==null? '': String(c));
+    alumnos.push({name, cells, totals:{asist:0, falt:0}});
+  }
+
+  computeTotals();
+  renderStudentsTable();
+  studentsCard.style.display = '';
+  document.getElementById('rubricsCard').scrollIntoView({behavior:'smooth'});
+  statusEl.textContent = 'Importación lista';
+  btnProcess.disabled = true;
+  updateUIState();
+}
+
+function computeTotals() {
+  let totalAs = 0, totalFa = 0;
+  for(const a of alumnos) {
+    let as = 0, fa = 0;
+    for(const cell of a.cells) {
+      if(!cell) continue;
+      const matchA = (cell.match(/\./g) || []).length;
+      const matchF = (cell.match(/\//g) || []).length;
+      as += matchA; 
+      fa += matchF;
+    }
+    a.totals.asist = as; 
+    a.totals.falt = fa;
+    totalAs += as; 
+    totalFa += fa;
+  }
+  totalAsistenciasEl.textContent = totalAs;
+  totalFaltasEl.textContent = totalFa;
+  countStudents.textContent = alumnos.length;
+}
+
+function renderStudentsTable() {
+  if(alumnos.length === 0) { 
+    studentsGrid.innerHTML = ''; 
+    return; 
+  }
+  
+  const tbl = document.createElement('table');
+  const thead = document.createElement('thead');
+  thead.innerHTML = '<tr><th>Alumno</th><th class="small">Asistencias</th><th class="small">Faltas</th></tr>';
+  tbl.appendChild(thead);
+  
+  const tbody = document.createElement('tbody');
+  alumnos.forEach((a, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="cursor:pointer" data-idx="${idx}">${a.name}</td><td>${a.totals.asist}</td><td>${a.totals.falt}</td>`;
+    tbody.appendChild(tr);
+  });
+  
+  tbl.appendChild(tbody);
+  studentsGrid.innerHTML = ''; 
+  studentsGrid.appendChild(tbl);
+  
+  // Add click event to view student details
+  studentsGrid.querySelectorAll('td[data-idx]').forEach(td => {
+    td.addEventListener('click', () => {
+      const idx = Number(td.dataset.idx); 
+      showStudentDetail(idx);
+    });
+  });
+}
+
+function showStudentDetail(idx) {
+  const a = alumnos[idx];
+  let html = `<strong>${a.name}</strong>\n\n`;
+  html += 'Celdas: \n';
+  a.cells.forEach((c, i) => html += `${i+1}: ${c || '-'}\n`);
+  alert(html.replace(/\n/g,'\n'));
+}
+
+// ===== Rubrics Management =====
+function addRubric() {
+  const nameEl = document.getElementById('rubricName');
+  const pctEl = document.getElementById('rubricPercent');
+  const name = String(nameEl.value||'').trim();
+  const pct = Number(pctEl.value);
+  
+  if(!name) return alert('Ingresa un nombre para la rúbrica');
+  if(!pct || pct <= 0) return alert('Ingresa un porcentaje válido (>0)');
+  
+  const total = rubricas.reduce((s, r) => s + r.percent, 0) + pct;
+  if(total > 100) return alert(`La suma de rubricas no puede exceder 100% (actual: ${total-pct}%).`);
+  
+  rubricas.push({name, percent: pct});
+  nameEl.value = ''; 
+  pctEl.value = '';
+  renderRubrics();
+  updateUIState();
+}
+
+function renderRubrics() {
+  rubricList.innerHTML = '';
+  rubricas.forEach((r, i) => {
+    const div = document.createElement('div'); 
+    div.className = 'rubric-item';
+    div.innerHTML = `
+      <div style="flex:1">
+        <strong>${r.name}</strong>
+        <div class="small">${r.percent}%</div>
+      </div>
+      <div>
+        <button data-i="${i}" class="btn ghost">Eliminar</button>
+      </div>
+    `;
+    rubricList.appendChild(div);
+  });
+  
+  rubricsTotal.textContent = rubricas.reduce((s, r) => s + r.percent, 0);
+  
+  // Add delete event to buttons
+  rubricList.querySelectorAll('button[data-i]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.i); 
+      rubricas.splice(idx, 1); 
+      renderRubrics();
+      updateUIState();
+    });
+  });
+}
+
+function clearRubrics() {
+  if(confirm('Borrar todas las rúbricas?')) { 
+    rubricas = []; 
+    renderRubrics(); 
+    updateUIState(); 
+  }
+}
+
+function updateUIState() {
+  document.getElementById('evaluateCard').style.display = 
+    (rubricas.length > 0 && alumnos.length > 0) ? '' : 'none';
+}
+
+// ===== Evaluation =====
+function openGrid() {
+    if(alumnos.length === 0) return alert('No hay alumnos importados');
+    if(rubricas.length === 0) return alert('Agrega al menos una rúbrica');
+    
+    // Hacer scroll al inicio de la página primero
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Pequeño retraso para que el scroll termine antes de mostrar el grid
+    setTimeout(() => {
+        const container = document.createElement('div');
+        container.className = 'card';
+        container.style.marginTop = '12px';
+        container.innerHTML = '<h3><i class="fas fa-book"></i> Grid de evaluación</h3>';
+        
+        const tbl = document.createElement('table');
+        const thead = document.createElement('thead');
+        let headRow = '<tr><th>Alumno</th>' + 
+            rubricas.map(r => `<th>${r.name}<br><span class="small">${r.percent}%</span></th>`).join('') + 
+            '<th>Final</th></tr>';
+        thead.innerHTML = headRow; 
+        tbl.appendChild(thead);
+        
+        const tbody = document.createElement('tbody');
+        alumnos.forEach(a => {
+            const row = document.createElement('tr');
+            let cols = `<td>${a.name}</td>`;
+            
+            rubricas.forEach(r => {
+                const val = (scores[a.name] && scores[a.name][r.name] != null) ? scores[a.name][r.name] : '';
+                cols += `
+                    <td>
+                        <input type="number" min="0" max="100" data-st="${a.name}" data-r="${r.name}" 
+                               value="${val}" style="width:80px">
+                    </td>
+                `;
+            });
+            
+            const final = (scores[a.name] && scores[a.name]['__final__'] != null) ? 
+                scores[a.name]['__final__'] : '-';
+            cols += `<td><strong class="small" data-final="${a.name}">${final}</strong></td>`;
+            
+            row.innerHTML = cols; 
+            tbody.appendChild(row);
+        });
+        
+        tbl.appendChild(tbody);
+        container.appendChild(tbl);
+        
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'btn';
+        saveBtn.textContent = 'Guardar puntuaciones y calcular final';
+        saveBtn.addEventListener('click', () => {
+            saveGridInputs(tbl); 
+            container.remove(); 
+            alert('Puntuaciones guardadas.');
+        });
+        
+        container.appendChild(document.createElement('br'));
+        container.appendChild(saveBtn);
+        
+        // Remove any existing grid
+        const existingGrid = document.querySelector('.left .card.grid-container');
+        if(existingGrid) existingGrid.remove();
+        
+        container.classList.add('grid-container');
+        document.querySelector('.left').prepend(container);
+    }, 300); // Pequeño retraso de 300ms para que el scroll sea visible
+}
+
+function saveGridInputs(tbl) {
+  const inputs = tbl.querySelectorAll('input[data-st]');
+  inputs.forEach(inp => {
+    const student = inp.dataset.st; 
+    const rub = inp.dataset.r; 
+    const val = Number(inp.value);
+    
+    if(!scores[student]) scores[student] = {};
+    scores[student][rub] = isNaN(val) ? 0 : Math.max(0, Math.min(100, val));
+  });
+  
+  computeFinals();
+}
+
+function startSequentialEvaluation() {
+  if(alumnos.length === 0) return alert('No hay alumnos');
+  if(rubricas.length === 0) return alert('No hay rúbricas');
+  startSequential(0, 0);
+}
+
+let seqStudentIndex = 0, seqRubIndex = 0;
+
+function startSequential(s = 0, r = 0) {
+  seqStudentIndex = s; 
+  seqRubIndex = r;
+  modal.style.display = 'flex';
+  showSeqModal();
+}
+
+function showSeqModal() {
+  if(seqStudentIndex >= alumnos.length) {
+    modal.style.display = 'none'; 
+    alert('Evaluación secuencial finalizada'); 
+    computeFinals(); 
+    return; 
+  }
+  
+  const alumno = alumnos[seqStudentIndex];
+  const rub = rubricas[seqRubIndex];
+  
+  modalContent.innerHTML = `
+    <div><strong>${alumno.name}</strong></div>
+    <div style="margin-top:8px">Rúbrica: <strong>${rub.name}</strong> (${rub.percent}%)</div>
+    <div style="margin-top:8px">
+      <label>Puntuación 0-100</label>
+      <input id="modalInput" type="number" min="0" max="100" style="width:100%">
+    </div>
+  `;
+  
+  const prev = scores[alumno.name] && scores[alumno.name][rub.name];
+  document.getElementById('modalInput').value = (prev != null ? prev : '');
+}
+
+modalNext.addEventListener('click', () => {
+  const val = Number(document.getElementById('modalInput').value);
+  const alumno = alumnos[seqStudentIndex]; 
+  const rub = rubricas[seqRubIndex];
+  
+  if(!scores[alumno.name]) scores[alumno.name] = {};
+  scores[alumno.name][rub.name] = isNaN(val) ? 0 : Math.max(0, Math.min(100, val));
+  
+  // Move to next rubric or student
+  seqRubIndex++;
+  if(seqRubIndex >= rubricas.length) {
+    seqRubIndex = 0; 
+    seqStudentIndex++;
+  }
+  
+  showSeqModal();
+});
+
+modalSkip.addEventListener('click', () => {
+  // Skip current rubric for this student
+  seqRubIndex++;
+  if(seqRubIndex >= rubricas.length) {
+    seqRubIndex = 0; 
+    seqStudentIndex++;
+  }
+  showSeqModal();
+});
+
+// ===== Compute Finals =====
+function computeFinals() {
+  for(const a of alumnos) {
+    const s = scores[a.name] || {};
+    let totalPoints = 0;
+    
+    rubricas.forEach(r => {
+      const val = (s[r.name] != null) ? s[r.name] : 0;
+      const contrib = (val / 100) * r.percent;
+      
+      // Verificar si es un examen y el alumno tiene 4+ faltas
+      const isExam = /(examen|test|evaluaci[oó]n)/i.test(r.name);
+      if(isExam && a.totals.falt >= 4) {
+        // Anular esta calificación (no sumar puntos)
+      } else {
+        totalPoints += contrib;
+      }
+    });
+    
+    // Store final score
+    if(!scores[a.name]) scores[a.name] = {};
+    scores[a.name]['__final__'] = parseFloat(totalPoints.toFixed(2));
+  }
+  
+  renderResultsTable();
+}
+
+function renderResultsTable() {
+  if(alumnos.length === 0) {
+    resultsTable.innerHTML = '<div class="small">No hay datos para mostrar</div>';
+    return;
+  }
+  
+  const tbl = document.createElement('table');
+  const thead = document.createElement('thead');
+  let headRow = '<tr><th>Alumno</th><th>Asist.</th><th>Faltas</th>';
+  
+  // Add rubrics headers
+  rubricas.forEach(r => {
+    headRow += `<th class="small">${r.name} (${r.percent}%)</th>`;
+  });
+  
+  headRow += '<th>Final</th></tr>';
+  thead.innerHTML = headRow;
+  tbl.appendChild(thead);
+  
+  const tbody = document.createElement('tbody');
+  alumnos.forEach(a => {
+    const row = document.createElement('tr');
+    const faltasClass = a.totals.falt >= 4 ? 'faltas-4' : (a.totals.falt >= 3 ? 'faltas-3' : '');
+    
+    let cells = `
+      <td>${a.name}</td>
+      <td>${a.totals.asist}</td>
+      <td class="${faltasClass}">${a.totals.falt}</td>
+    `;
+    
+    // Add rubric scores
+    rubricas.forEach(r => {
+      const isExam = /(examen|test|evaluaci[oó]n)/i.test(r.name);
+      let score = (scores[a.name] && scores[a.name][r.name] != null) ? 
+        scores[a.name][r.name] : '-';
+      
+      // Marcar en rojo si es examen y tiene 4+ faltas
+      if(isExam && a.totals.falt >= 4) {
+        score = `<span style="color:red">${score} (anulada)</span>`;
+      }
+      
+      cells += `<td class="small">${score}</td>`;
+    });
+    
+    // Add final score
+    const final = (scores[a.name] && scores[a.name]['__final__'] != null) ? 
+      scores[a.name]['__final__'] : '-';
+    cells += `<td><strong>${final}</strong></td>`;
+    
+    row.innerHTML = cells;
+    tbody.appendChild(row);
+  });
+  
+  tbl.appendChild(tbody);
+  resultsTable.innerHTML = '';
+  resultsTable.appendChild(tbl);
+}
+
+function renderResultsTable() {
+  if(alumnos.length === 0) {
+    resultsTable.innerHTML = '<div class="small">No hay datos para mostrar</div>';
+    return;
+  }
+  
+  const tbl = document.createElement('table');
+  const thead = document.createElement('thead');
+  let headRow = '<tr><th>Alumno</th><th>Asist.</th><th>Faltas</th>';
+  
+  // Add rubrics headers
+  rubricas.forEach(r => {
+    headRow += `<th class="small">${r.name} (${r.percent}%)</th>`;
+  });
+  
+  headRow += '<th>Final</th></tr>';
+  thead.innerHTML = headRow;
+  tbl.appendChild(thead);
+  
+  const tbody = document.createElement('tbody');
+  alumnos.forEach(a => {
+    const row = document.createElement('tr');
+    const faltasClass = a.totals.falt >= 4 ? 'faltas-4' : (a.totals.falt >= 3 ? 'faltas-3' : '');
+    
+    let cells = `
+      <td>${a.name}</td>
+      <td>${a.totals.asist}</td>
+      <td class="${faltasClass}">${a.totals.falt}</td>
+    `;
+    
+    // Add rubric scores
+    rubricas.forEach(r => {
+      const score = (scores[a.name] && scores[a.name][r.name] != null) ? 
+        scores[a.name][r.name] : '-';
+      cells += `<td class="small">${score}</td>`;
+    });
+    
+    // Add final score
+    const final = (scores[a.name] && scores[a.name]['__final__'] != null) ? 
+      scores[a.name]['__final__'] : '-';
+    cells += `<td><strong>${final}</strong></td>`;
+    
+    row.innerHTML = cells;
+    tbody.appendChild(row);
+  });
+  
+  tbl.appendChild(tbody);
+  resultsTable.innerHTML = '';
+  resultsTable.appendChild(tbl);
+}
+
+// ===== Export Functions =====
+
+async function exportToPDF() {
+    if(alumnos.length === 0) return alert('Nada que exportar');
+    
+    // Obtener nombre del grupo del primer alumno
+    let nombreGrupo = "grupo";
+    if(alumnos.length > 0 && alumnos[0].name.includes('-')) {
+        nombreGrupo = alumnos[0].name.split('-')[1].trim();
+    } else if(alumnos.length > 0) {
+        nombreGrupo = alumnos[0].name.trim();
+    }
+    
+    // Limpiar nombre del grupo
+    let nombreGrupoLimpio = nombreGrupo
+        .replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]/g, '')
+        .trim()
+        .replace(/\s+/g, '_')
+        .toLowerCase();
+    
+    if(!nombreGrupoLimpio) nombreGrupoLimpio = 'grupo';
+    
+    // Crear fecha para el nombre del archivo
+    const fecha = new Date();
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    const nombreArchivo = `${mes}_${dia}_${nombreGrupoLimpio}_calificaciones.pdf`;
+    
+    // Crear el PDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Título
+    doc.setFontSize(18);
+    doc.text('Calificaciones del Grupo', 14, 20);
+    doc.setFontSize(12);
+    doc.text(`Grupo: ${nombreGrupo} - Fecha: ${dia}/${mes}/${fecha.getFullYear()}`, 14, 28);
+    
+    // Preparar datos para la tabla
+    const headers = [
+        'Alumno', 
+        'Asist.', 
+        'Faltas', 
+        ...rubricas.map(r => `${r.name} (${r.percent}%)`),
+        'Final'
+    ];
+    
+    const data = alumnos.map(a => {
+        const row = [
+            a.name, 
+            a.totals.asist, 
+            a.totals.falt
+        ];
+        
+        rubricas.forEach(r => {
+            row.push((scores[a.name] && scores[a.name][r.name] != null) ? scores[a.name][r.name] : '-');
+        });
+        
+        row.push((scores[a.name] && scores[a.name]['__final__'] != null) ? scores[a.name]['__final__'] : '-');
+        return row;
+    });
+    
+    // Generar tabla
+    doc.autoTable({
+        head: [headers],
+        body: data,
+        startY: 35,
+        styles: {
+            fontSize: 8,
+            cellPadding: 3
+        },
+        headStyles: {
+            fillColor: [196, 25, 25], // Rojo UAD
+            textColor: 255
+        }
+    });
+    
+    // Intentar usar File System Access API si está disponible
+    if('showDirectoryPicker' in window) {
+        try {
+            const directoryHandle = await window.showDirectoryPicker({
+                startIn: 'downloads'
+            });
+            
+            let folderHandle;
+            try {
+                folderHandle = await directoryHandle.getDirectoryHandle(nombreGrupoLimpio, { create: true });
+            } catch(error) {
+                console.error("Error al crear/abrir la carpeta:", error);
+                alert(`No se pudo crear la carpeta "${nombreGrupoLimpio}". Guardando en ubicación seleccionada.`);
+                folderHandle = directoryHandle;
+            }
+            
+            const fileHandle = await folderHandle.getFileHandle(nombreArchivo, { create: true });
+            const writable = await fileHandle.createWritable();
+            
+            const pdfData = doc.output('blob');
+            await writable.write(pdfData);
+            await writable.close();
+            
+            alert(`Archivo guardado como: ${nombreArchivo}`);
+            return;
+        } catch(error) {
+            console.error("Error con File System Access API:", error);
+            // Continuar con método tradicional si falla
+        }
+    }
+    
+    // Método tradicional de descarga
+    doc.save(nombreArchivo);
+    alert(`Archivo exportado como: ${nombreArchivo}`);
+}
+
+async function exportToExcel() {
+    if(alumnos.length === 0) return alert('Nada que exportar');
+    
+    // Crear el workbook
+    const wb = XLSX.utils.book_new();
+    
+    // 1. Hoja de calificaciones
+    const datosCalificaciones = [
+        ['Alumno', 'Asistencias', 'Faltas', ...rubricas.map(r => r.name), 'Final']
+    ];
+    
+    alumnos.forEach(a => {
+        const row = [a.name, a.totals.asist, a.totals.falt];
+        rubricas.forEach(r => {
+            row.push((scores[a.name] && scores[a.name][r.name] != null) ? scores[a.name][r.name] : '');
+        });
+        row.push((scores[a.name] && scores[a.name]['__final__'] != null) ? scores[a.name]['__final__'] : '');
+        datosCalificaciones.push(row);
+    });
+    
+    const wsCalificaciones = XLSX.utils.aoa_to_sheet(datosCalificaciones);
+    XLSX.utils.book_append_sheet(wb, wsCalificaciones, "Calificaciones");
+    
+    // 2. Hoja de asistencia (si hay datos disponibles)
+    if(importedRows.length > 2) {
+        const wsAsistencia = XLSX.utils.aoa_to_sheet(importedRows);
+        
+        // Aplicar merges para los meses
+        if(importedRows[0].length > 1) {
+            const merges = [];
+            let currentMes = importedRows[0][1];
+            let startMerge = 1;
+            
+            for(let i = 2; i < importedRows[0].length; i++) {
+                if(importedRows[0][i] === currentMes) {
+                    continue;
+                } else {
+                    if(startMerge < i) {
+                        merges.push({
+                            s: {r: 0, c: startMerge},
+                            e: {r: 0, c: i-1}
+                        });
+                    }
+                    currentMes = importedRows[0][i];
+                    startMerge = i;
+                }
+            }
+            
+            if(startMerge < importedRows[0].length) {
+                merges.push({
+                    s: {r: 0, c: startMerge},
+                    e: {r: 0, c: importedRows[0].length-1}
+                });
+            }
+            
+            wsAsistencia['!merges'] = merges;
+        }
+        
+        XLSX.utils.book_append_sheet(wb, wsAsistencia, "Asistencia");
+    }
+    
+    // Generar nombre del archivo
+    const fecha = new Date();
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    
+    // Obtener nombre del grupo del primer alumno (asumiendo formato "Nombre - Grupo")
+    let nombreGrupo = "grupo";
+    if(alumnos.length > 0 && alumnos[0].name.includes('-')) {
+        nombreGrupo = alumnos[0].name.split('-')[1].trim();
+    } else if(alumnos.length > 0) {
+        nombreGrupo = alumnos[0].name.trim();
+    }
+    
+    // Limpiar nombre del grupo
+    let nombreGrupoLimpio = nombreGrupo
+        .replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]/g, '')
+        .trim()
+        .replace(/\s+/g, '_')
+        .toLowerCase();
+    
+    if(!nombreGrupoLimpio) nombreGrupoLimpio = 'grupo';
+    
+    const nombreArchivo = `${mes}_${dia}_${nombreGrupoLimpio}_calificaciones.xlsx`;
+    
+    // Intentar usar File System Access API si está disponible
+    if('showDirectoryPicker' in window) {
+        try {
+            const directoryHandle = await window.showDirectoryPicker({
+                startIn: 'downloads'
+            });
+            
+            let folderHandle;
+            try {
+                folderHandle = await directoryHandle.getDirectoryHandle(nombreGrupoLimpio, { create: true });
+            } catch(error) {
+                console.error("Error al crear/abrir la carpeta:", error);
+                alert(`No se pudo crear la carpeta "${nombreGrupoLimpio}". Guardando en ubicación seleccionada.`);
+                folderHandle = directoryHandle;
+            }
+            
+            const fileHandle = await folderHandle.getFileHandle(nombreArchivo, { create: true });
+            const writable = await fileHandle.createWritable();
+            
+            const excelData = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            const blob = new Blob([excelData], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            
+            await writable.write(blob);
+            await writable.close();
+            
+            alert(`Archivo guardado como: ${nombreArchivo}`);
+            return;
+        } catch(error) {
+            console.error("Error con File System Access API:", error);
+            // Continuar con método tradicional si falla
+        }
+    }
+    
+    // Método tradicional de descarga
+    try {
+        XLSX.writeFile(wb, nombreArchivo);
+        alert(`Archivo exportado como: ${nombreArchivo}`);
+    } catch(error) {
+        console.error("Error al exportar:", error);
+        alert("Error al exportar el archivo. Intenta nuevamente.");
+    }
+}
+
+function exportToCSV() {
+    // Esta función ahora simplemente llama a exportToExcel ya que el formato es similar
+    exportToExcel();
+}
+</script>
+</body>
+</html>
